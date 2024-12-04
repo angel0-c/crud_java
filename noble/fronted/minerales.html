@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Minerales</title>
+    <!-- Incluir el CSS de Bootstrap desde un CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Navbar de Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">Energía</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                  <!-- Dropdown para Energías -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Energías
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="todos_los_tipos_energia.html">Consulta general</a>
+                          <a class="dropdown-item" href="buscar_tipo_energia.html">Buscar tipo de energía</a>
+                          <a class="dropdown-item" href="registro_proyecto.html">Agregar Nuevo Proyecto</a>
+                      </div>
+                  </li>
+                  <!-- Dropdown para Proyectos -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Proyectos
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="proyectos.html">Consulta general</a>
+                          <a class="dropdown-item" href="registro_proyecto.html">Agregar Nuevo Tipo</a>
+                      </div>
+                  </li>
+                  <!-- Dropdown para Minerales -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Minerales
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="minerales.html">Consulta general</a>
+                          <a class="dropdown-item" href="registrar_mineral.html">Agregar Nuevo Tipo</a>
+                      </div>
+                  </li>
+                  <!-- Dropdown para Investigadores -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Investigadores
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="investigadores.html">Consulta general</a>
+                          <a class="dropdown-item" href="registro_investigador.html">Agregar nuevo investigador</a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Lista de Minerales</h1>
+        <div class="my-3">
+            <!-- Agregar Nuevo Mineral con imagen -->
+            <a href="registrar_mineral.html" class="btn btn-primary">
+                <img src="img/usuario.png"Agregar" width="20" height="20"> Agregar Nuevo Mineral
+            </a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Ubicación</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-minerales">
+                <!-- Los datos se llenarán aquí desde el archivo JS -->
+                <!-- Ejemplo de fila con botones de imágenes -->
+                <tr>
+                    <td>1</td>
+                    <td>Mineral A</td>
+                    <td>Descripción del mineral A</td>
+                    <td>Ubicación A</td>
+                    <td>
+                        <!-- Ver Detalles con imagen -->
+                        <a href="ver_detalles_mineral.html?id=1" class="btn btn-info btn-sm">
+                            <img src="img/vista.png" alt="Ver Detalles" width="20" height="20"> Detalles
+                        </a>
+                        <!-- Eliminar con imagen -->
+                        <button class="btn btn-danger btn-sm" onclick="eliminarMineral(1)">
+                            <img src="img/eliminar.png" alt="Eliminar" width="20" height="20"> Eliminar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Script para cargar los datos de los minerales -->
+    <script src="minerales.js"></script>
+
+    <script>
+        // Función para eliminar mineral (ejemplo)
+        function eliminarMineral(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esta acción.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Aquí va la lógica para eliminar el mineral con el id correspondiente
+                    Swal.fire('Eliminado!', 'El mineral ha sido eliminado.', 'success');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
